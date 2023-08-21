@@ -14,7 +14,7 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField] private GameObject playerShot;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float shotTimer;
-    private float shotCount;
+    public float shotCount;
 
 
     // Start is called before the first frame update
@@ -32,19 +32,21 @@ public class PlayerCtrl : MonoBehaviour
 
         Vector2 playerVel = new Vector2(horizontal, vertical);
 
-        playerVel.Normalize();
+        //playerVel.Normalize();
 
         rb2D.velocity = playerVel * speed;
+
+        shotCount -= Time.deltaTime;
 
         if (Input.GetButton("Fire1") && shotCount <= 0)
         {
             fire();
-            shotCount -= Time.deltaTime;
         }
     }
 
     void fire()
     {        
         Instantiate(playerShot, firePoint.transform.position, Quaternion.identity);
+        shotCount = shotTimer;
     }
 }
