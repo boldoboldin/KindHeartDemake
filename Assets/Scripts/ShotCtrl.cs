@@ -17,6 +17,6 @@ public class ShotCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Destroy(this.gameObject, 1.5f);
     }
 }

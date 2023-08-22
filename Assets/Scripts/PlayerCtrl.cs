@@ -12,9 +12,12 @@ public class PlayerCtrl : MonoBehaviour
 
     [Header("Shot Variables")]
     [SerializeField] private GameObject playerShot;
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform firePointM;
+    [SerializeField] private Transform firePointL;
+    [SerializeField] private Transform firePointR;
     [SerializeField] private float shotTimer;
-    public float shotCount;
+    private float shotCount;
+    public int shotMode;
 
 
     // Start is called before the first frame update
@@ -38,7 +41,7 @@ public class PlayerCtrl : MonoBehaviour
 
         shotCount -= Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && shotCount <= 0)
+        if (Input.GetKey(KeyCode.Space) && shotCount <= 0)
         {
             fire();
         }
@@ -46,7 +49,27 @@ public class PlayerCtrl : MonoBehaviour
 
     void fire()
     {        
-        Instantiate(playerShot, firePoint.transform.position, Quaternion.identity);
-        shotCount = shotTimer;
+        if (shotMode == 0)
+        {
+            Instantiate(playerShot, firePointM.transform.position, Quaternion.identity);
+            shotCount = shotTimer;
+        }
+
+        if (shotMode == 1)
+        {
+            Instantiate(playerShot, firePointL.transform.position, Quaternion.identity);
+            Instantiate(playerShot, firePointR.transform.position, Quaternion.identity);
+            shotCount = shotTimer;
+        }
+
+        if (shotMode == 2)
+        {
+            Instantiate(playerShot, firePointM.transform.position, Quaternion.identity);
+            Instantiate(playerShot, firePointL.transform.position, Quaternion.identity);
+            Instantiate(playerShot, firePointR.transform.position, Quaternion.identity);
+            shotCount = shotTimer;
+        }
+
+
     }
 }
