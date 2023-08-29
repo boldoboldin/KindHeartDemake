@@ -6,6 +6,7 @@ public class ShotCtrl : MonoBehaviour
 {
     private Rigidbody2D rb2D;
     [SerializeField] private float shotSpeed;
+    [SerializeField] private GameObject shotImpact;
     
     // Start is called before the first frame update
     void Start()
@@ -18,5 +19,23 @@ public class ShotCtrl : MonoBehaviour
     void Update()
     {
         Destroy(this.gameObject, 1.5f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyCtrl>().EnemyHit(1);
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<PlayerCtrl>().PlayerHit(1);
+        }
+
+        Destroy(this.gameObject);
+        Instantiate(shotImpact, transform.position, Quaternion.identity);
+
+
     }
 }

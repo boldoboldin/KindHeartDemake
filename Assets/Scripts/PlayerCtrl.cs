@@ -10,6 +10,8 @@ public class PlayerCtrl : MonoBehaviour
 
     [SerializeField] private float speed;
 
+    [SerializeField] private float hp;
+
     [Header("Shot Variables")]
     [SerializeField] private GameObject playerShot;
     [SerializeField] private Transform firePointM;
@@ -69,7 +71,10 @@ public class PlayerCtrl : MonoBehaviour
             Instantiate(playerShot, firePointR.transform.position, Quaternion.identity);
             shotCount = shotTimer;
         }
+    }
 
-
+    public void PlayerHit(int damage)
+    {
+        hp = hp - damage;
     }
 }

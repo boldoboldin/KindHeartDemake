@@ -13,6 +13,10 @@ public class EnemyCtrl : MonoBehaviour
     [SerializeField] private float distY;
     [SerializeField] private float distMin;
 
+    [SerializeField] private float hp;
+
+    [SerializeField] private GameObject explosionFX;
+
     [Header("Shot Variables")]
     [SerializeField] private GameObject playerShot;
     [SerializeField] private Transform firePoint;
@@ -48,5 +52,16 @@ public class EnemyCtrl : MonoBehaviour
         Instantiate(playerShot, firePoint.transform.position, Quaternion.identity);
         shotCount = shotTimer;
         shotTimer = Random.Range(0.1f, 3f);
+    }
+
+    public void EnemyHit(int damage)
+    {
+        hp = hp - damage;
+
+        if (hp < 0f)
+        {
+            Instantiate(explosionFX, firePoint.transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }
