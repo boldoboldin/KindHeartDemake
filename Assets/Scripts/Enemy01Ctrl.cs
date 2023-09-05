@@ -2,26 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCtrl : MonoBehaviour
+public class Enemy01Ctr : Enemies
 {
     private Rigidbody2D rb2D;
-
-    [SerializeField] private float speed;
 
     private GameObject player;
 
     [SerializeField] private float distY;
     [SerializeField] private float distMin;
 
-    [SerializeField] private float hp;
-
-    [SerializeField] private GameObject explosionFX;
-
-    [Header("Shot Variables")]
-    [SerializeField] private GameObject playerShot;
-    [SerializeField] private Transform firePoint;
-    private float shotTimer;
-    private float shotCount;
 
     // Start is called before the first frame update
     void Start()
@@ -36,32 +25,26 @@ public class EnemyCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Shot();
+    }
+
+    private void Shot()
+    {
         distY = transform.position.y - player.transform.position.y;
-        
+
         shotCount -= Time.deltaTime;
 
         if (distY <= distMin && shotCount <= 0)
         {
-            fire();
+            Fire();
         }
     }
 
-    void fire()
+    void Fire()
     {
-        
         Instantiate(playerShot, firePoint.transform.position, Quaternion.identity);
         shotCount = shotTimer;
         shotTimer = Random.Range(0.1f, 3f);
     }
 
-    public void EnemyHit(int damage)
-    {
-        hp = hp - damage;
-
-        if (hp < 0f)
-        {
-            Instantiate(explosionFX, firePoint.transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
-    }
 }
