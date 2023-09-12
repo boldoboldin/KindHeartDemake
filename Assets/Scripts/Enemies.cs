@@ -4,35 +4,18 @@ using UnityEngine;
 
 public class Enemies : MonoBehaviour
 {
+    [Header("Status Variables")]
     [SerializeField] protected float speed;
     [SerializeField] protected int hp;
 
     [SerializeField] protected GameObject explosionFX;
 
     [Header("Shot Variables")]
-    [SerializeField] protected GameObject playerShot;
+    [SerializeField] protected GameObject enemyShot;
     [SerializeField] protected Transform firePoint;
-    protected float shotTimer;
-    protected float shotCount;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void fire()
-    {
-        Instantiate(playerShot, firePoint.transform.position, Quaternion.identity);
-        shotCount = shotTimer;
-        shotTimer = Random.Range(0.1f, 3f);
-    }
+    [SerializeField] protected float shotSpeed;
+    [SerializeField] protected float shotTimer;
+    protected float shotTimerCurrent;
 
     public void EnemyHit(int damage)
     {
@@ -44,6 +27,4 @@ public class Enemies : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
 }

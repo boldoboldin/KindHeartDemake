@@ -17,21 +17,34 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField] private Transform firePointM;
     [SerializeField] private Transform firePointL;
     [SerializeField] private Transform firePointR;
+    [SerializeField] private float shotSpeed;
     [SerializeField] private float shotTimer;
-    private float shotCount;
+    private float shotTimerCurrent;
     public int shotMode;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();        
+        rb2D = GetComponent<Rigidbody2D>();
+        shotTimerCurrent = shotTimer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Pegando os inputs
+        Movement();
+
+        shotTimerCurrent -= Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.Space) && shotTimerCurrent <= 0)
+        {
+            Fire();
+        }
+    }
+
+    private void Movement()
+    {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
@@ -40,28 +53,19 @@ public class PlayerCtrl : MonoBehaviour
         //playerVel.Normalize();
 
         rb2D.velocity = playerVel * speed;
-
-        shotCount -= Time.deltaTime;
-
-        if (Input.GetKey(KeyCode.Space) && shotCount <= 0)
-        {
-            fire();
-        }
     }
 
-    void fire()
+    void Fire()
     {        
         if (shotMode == 0)
         {
             Instantiate(playerShot, firePointM.transform.position, Quaternion.identity);
-            shotCount = shotTimer;
         }
 
         if (shotMode == 1)
         {
             Instantiate(playerShot, firePointL.transform.position, Quaternion.identity);
             Instantiate(playerShot, firePointR.transform.position, Quaternion.identity);
-            shotCount = shotTimer;
         }
 
         if (shotMode == 2)
@@ -69,8 +73,9 @@ public class PlayerCtrl : MonoBehaviour
             Instantiate(playerShot, firePointM.transform.position, Quaternion.identity);
             Instantiate(playerShot, firePointL.transform.position, Quaternion.identity);
             Instantiate(playerShot, firePointR.transform.position, Quaternion.identity);
-            shotCount = shotTimer;
         }
+
+        shotTimerCurrent = shotTimer;
     }
 
     public void PlayerHit(int damage)

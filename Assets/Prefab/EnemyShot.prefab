@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotSpeed: -7
-  shotImpact: {fileID: 1918594071891906898, guid: f6861b34717a71842b5378d560daefae, type: 3}
+  shotImpactXF: {fileID: 0}
 --- !u!1 &3129270978916085350
 GameObject:
   m_ObjectHideFlags: 0
