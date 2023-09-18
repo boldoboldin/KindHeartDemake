@@ -11,7 +11,7 @@ public class Enemy01Ctrl : Enemies
     {
         rb2D = GetComponent<Rigidbody2D>();
         rb2D.velocity = new Vector2(0f, -speed);
-        shotTimerCurrent = shotTimer;
+        currentShotTime = maxShotTime;
     }
 
     // Update is called once per frame
@@ -26,9 +26,9 @@ public class Enemy01Ctrl : Enemies
 
         if (visible)
         {
-            shotTimerCurrent -= Time.deltaTime;
+            currentShotTime -= Time.deltaTime;
 
-            if (shotTimerCurrent <= 0)
+            if (currentShotTime <= 0)
             {
                 Fire();
             }
@@ -36,8 +36,9 @@ public class Enemy01Ctrl : Enemies
     }
 
     void Fire()
-    {  
-        var shotInst = Instantiate(enemyShot, firePoint.transform.position, Quaternion.identity);
-        shotTimerCurrent = shotTimer;
+    {
+        var shotInst = Instantiate(enemyShot, firePoint.position, firePoint.rotation);
+        shotInst.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shotSpeed);
+        currentShotTime = maxShotTime;
     }
 }

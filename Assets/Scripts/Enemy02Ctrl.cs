@@ -6,12 +6,16 @@ using UnityEngine;
 public class Enemy02Ctrl : Enemies
 {
     private Rigidbody2D rb2D;
-    private bool canMove;
+
+    [SerializeField] private float yMax = 2.5f;
+    [SerializeField] private bool canMove;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        rb2D.velocity = new Vector2(0f, -speed);
+        currentShotTime = maxShotTime;
     }
 
     // Update is called once per frame
@@ -19,13 +23,19 @@ public class Enemy02Ctrl : Enemies
     {
         Shot();
 
-        if(transform.position.y < yMax && canMove)
+        if (transform.position.y < yMax && canMove)
         {
-            if(transform.position.y < 0)
+            if (transform.position.x < 0)
             {
-                rb2D.velocity = new Vector2(speed, - speed);
+                rb2D.velocity = new Vector2(speed, -speed);
+                canMove = false;
             }
-            
+            else
+            {
+                rb2D.velocity = new Vector2(-speed, -speed);
+                canMove = false;
+            }
+
         }
     }
 
@@ -35,11 +45,16 @@ public class Enemy02Ctrl : Enemies
 
         if (visible)
         {
-            shotTimerCurrent -= Time.deltaTime;
+            var player = FindObjectOfType<PlayerCtrl>();
 
-            if (shotTimerCurrent <= 0)
+            if (player != null)
             {
-                Fire();
+                currentShotTime -= Time.deltaTime;
+
+                if (currentShotTime <= 0)
+                {
+                    Fire();
+                }
             }
         }
     }
@@ -56,6 +71,6 @@ public class Enemy02Ctrl : Enemies
 
         shotInst.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-        shotTimerCurrent = shotTimer;
+        currentShotTime = maxShotTime;
     }
 }

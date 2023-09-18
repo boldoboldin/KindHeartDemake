@@ -12,13 +12,11 @@ public class ShotCtrl : MonoBehaviour
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        rb2D.velocity = new Vector2(0f, shotSpeed);
+        //rb2D.velocity = new Vector2(0f, shotSpeed);
     }
 
     // Update is called once per frame
-    void Update()
-
-         
+    void Update() 
     {
         Destroy(this.gameObject, 1.5f);
     }

@@ -6,7 +6,7 @@ public class Enemies : MonoBehaviour
 {
     [Header("Status Variables")]
     [SerializeField] protected float speed;
-    [SerializeField] protected int hp;
+    [SerializeField] protected int enemyHP;
 
     [SerializeField] protected GameObject explosionFX;
 
@@ -14,14 +14,14 @@ public class Enemies : MonoBehaviour
     [SerializeField] protected GameObject enemyShot;
     [SerializeField] protected Transform firePoint;
     [SerializeField] protected float shotSpeed;
-    [SerializeField] protected float shotTimer;
-    protected float shotTimerCurrent;
+    [SerializeField] protected float maxShotTime;
+    protected float currentShotTime;
 
     public void EnemyHit(int damage)
     {
-        hp =- damage;
+        enemyHP =- damage;
 
-        if (hp < 0f)
+        if (enemyHP <= 0f)
         {
             Instantiate(explosionFX, firePoint.transform.position, Quaternion.identity);
             Destroy(gameObject);
