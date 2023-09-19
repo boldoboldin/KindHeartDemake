@@ -10031,7 +10031,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.00000011920929, y: 0}
@@ -10052,7 +10052,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -10087,12 +10087,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  hp: 1
-  explosionFX: {fileID: 0}
+  enemyHP: 2
+  explosionFX: {fileID: 1034389779976631486, guid: ffba079a09d036d4e89fd6f7d0c1d8fe, type: 3}
   enemyShot: {fileID: 2129240445050065045, guid: 4808361ee2f8971458733e9f042d39c5, type: 3}
   firePoint: {fileID: 1324600810}
   shotSpeed: 2
-  shotTimer: 1
+  maxShotTime: 1
+  yMax: 2.5
+  canMove: 0
 --- !u!1 &1119901387
 GameObject:
   m_ObjectHideFlags: 0
@@ -15057,7 +15059,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!70 &2062928426
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -15087,12 +15089,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  hp: 10
-  explosionFX: {fileID: 0}
+  enemyHP: 1
+  explosionFX: {fileID: 1034389779976631486, guid: ffba079a09d036d4e89fd6f7d0c1d8fe, type: 3}
   enemyShot: {fileID: 2129240445050065045, guid: 4808361ee2f8971458733e9f042d39c5, type: 3}
   firePoint: {fileID: 1928642727}
   shotSpeed: 2
-  shotTimer: 1
+  maxShotTime: 2
 --- !u!1 &2146690820
 GameObject:
   m_ObjectHideFlags: 0
@@ -19913,11 +19915,23 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4522300704182043288, guid: 76e099c6bd9bd8d46b24577e6de2cdee, type: 3}
+      propertyPath: playerHP
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522300704182043288, guid: 76e099c6bd9bd8d46b24577e6de2cdee, type: 3}
       propertyPath: shotMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4522300704182043288, guid: 76e099c6bd9bd8d46b24577e6de2cdee, type: 3}
       propertyPath: shotSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522300704182043288, guid: 76e099c6bd9bd8d46b24577e6de2cdee, type: 3}
+      propertyPath: explosionFX
+      value: 
+      objectReference: {fileID: 1034389779976631486, guid: ffba079a09d036d4e89fd6f7d0c1d8fe, type: 3}
+    - target: {fileID: 4522300704182043288, guid: 76e099c6bd9bd8d46b24577e6de2cdee, type: 3}
+      propertyPath: maxShotTime
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4522300704182043289, guid: 76e099c6bd9bd8d46b24577e6de2cdee, type: 3}

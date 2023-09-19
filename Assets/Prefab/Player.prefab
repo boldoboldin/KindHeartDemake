@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4522300703273946204}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: FirePointR
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4522300703517061205}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: FirePointM
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4522300703724488845}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: TurbineParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 4522300703743471660}
   - component: {fileID: 4522300703743471658}
   - component: {fileID: 4522300703743471659}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Particle System4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4920,7 +4920,7 @@ GameObject:
   - component: {fileID: 4522300703824829404}
   - component: {fileID: 4522300703824829402}
   - component: {fileID: 4522300703824829403}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Particle System1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9766,7 +9766,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4522300704182043291}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -9791,12 +9791,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  hp: 5
+  playerHP: 0
+  explosionFX: {fileID: 0}
   playerShot: {fileID: 2129240445050065045, guid: 191fddfb5b35f694abfecb06924e65ca, type: 3}
   firePointM: {fileID: 4522300703517061205}
   firePointL: {fileID: 4522300705184550790}
   firePointR: {fileID: 4522300703273946204}
-  shotTimer: 0.7
+  shotSpeed: 0
+  maxShotTime: 0
   shotMode: 0
 --- !u!70 &8916396990686864957
 CapsuleCollider2D:
@@ -9824,7 +9826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4522300704648504756}
   - component: {fileID: 4522300704648504755}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9910,7 +9912,7 @@ GameObject:
   - component: {fileID: 4522300704687466532}
   - component: {fileID: 4522300704687466530}
   - component: {fileID: 4522300704687466531}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Particle System3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14720,7 +14722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4522300704774089353}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14756,7 +14758,7 @@ GameObject:
   - component: {fileID: 4522300704881902241}
   - component: {fileID: 4522300704881902255}
   - component: {fileID: 4522300704881902240}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Particle System2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19566,7 +19568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4522300705184550790}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: FirePointL
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}

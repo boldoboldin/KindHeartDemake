@@ -36,7 +36,6 @@ public class PlayerCtrl : MonoBehaviour
     void Update()
     {
         Movement();
-
         Shot();
     }
 
