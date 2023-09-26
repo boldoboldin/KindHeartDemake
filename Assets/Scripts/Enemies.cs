@@ -19,11 +19,22 @@ public class Enemies : MonoBehaviour
 
     public void EnemyHit(int damage)
     {
-        enemyHP =- damage;
+        enemyHP -= damage;
+        Debug.Log(enemyHP);
 
         if (enemyHP <= 0f)
         {
             Instantiate(explosionFX, firePoint.transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<PlayerCtrl>().PlayerHit(1);
+            Instantiate(explosionFX, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

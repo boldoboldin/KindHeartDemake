@@ -18,10 +18,10 @@ public class ShotCtrl : MonoBehaviour
     // Update is called once per frame
     void Update() 
     {
-        Destroy(this.gameObject, 1.5f);
+        Destroy(this.gameObject, 1f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
@@ -33,7 +33,7 @@ public class ShotCtrl : MonoBehaviour
             other.GetComponent<PlayerCtrl>().PlayerHit(1);
         }
 
-        Instantiate(shotImpactXF, transform.position, Quaternion.identity);
         Destroy(gameObject);
+        Instantiate(shotImpactXF, transform.position, Quaternion.identity);
     }
 }
