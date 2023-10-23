@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Enemies : MonoBehaviour
 {
+    [SerializeField] protected GameObject explosionFX;
+
+    [SerializeField] protected int pointsByEnemy;
+
     [Header("Status Variables")]
     [SerializeField] protected float speed;
     [SerializeField] protected int enemyHP;
 
-    [SerializeField] protected GameObject explosionFX;
-
     [Header("Shot Variables")]
     [SerializeField] protected GameObject enemyShot;
-    [SerializeField] protected Transform firePoint;
     [SerializeField] protected float shotSpeed;
     [SerializeField] protected float maxShotTime;
     protected float currentShotTime;
@@ -24,8 +25,10 @@ public class Enemies : MonoBehaviour
 
         if (enemyHP <= 0f)
         {
-            Instantiate(explosionFX, firePoint.transform.position, Quaternion.identity);
+            Instantiate(explosionFX, transform.position, Quaternion.identity);
             Destroy(gameObject);
+
+            FindObjectOfType<SpawEnemies>().PointsToGive(pointsByEnemy);
         }
     }
 

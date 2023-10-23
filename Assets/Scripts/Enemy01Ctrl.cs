@@ -6,6 +6,8 @@ public class Enemy01Ctrl : Enemies
 {
     private Rigidbody2D rb2D;
 
+    [SerializeField] protected Transform firePoint;
+
     // Start is called before the first frame update
     void Start()
     {

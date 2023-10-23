@@ -7,6 +7,8 @@ public class Enemy02Ctrl : Enemies
 {
     private Rigidbody2D rb2D;
 
+    [SerializeField] protected Transform firePoint;
+
     [SerializeField] private float yMax = 2.5f;
     [SerializeField] private bool canMove;
 
