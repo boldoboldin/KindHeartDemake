@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 333331347}
+  - component: {fileID: 333331348}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -154,6 +155,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &333331348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333331346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8bc4879dc4ca1749a972e039bac1e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
+  points: 0
+  level: 1
+  levelBase: 100
+  chargeTime: 5
+  enemiesQtd: 100
 --- !u!1 &351517428
 GameObject:
   m_ObjectHideFlags: 0
@@ -10117,13 +10136,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e19e78d0d8a014f87044cfb8472827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionFX: {fileID: 1034389779976631486, guid: ffba079a09d036d4e89fd6f7d0c1d8fe, type: 3}
+  pointsByEnemy: 0
   speed: 1
   enemyHP: 2
-  explosionFX: {fileID: 1034389779976631486, guid: ffba079a09d036d4e89fd6f7d0c1d8fe, type: 3}
   enemyShot: {fileID: 2129240445050065045, guid: 4808361ee2f8971458733e9f042d39c5, type: 3}
-  firePoint: {fileID: 1324600810}
   shotSpeed: 2
   maxShotTime: 1
+  firePoint: {fileID: 1324600810}
   yMax: 2.5
   canMove: 0
 --- !u!1 &1119901387
@@ -15119,13 +15139,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb34d24a1814a4b47aa6ee6edddd1d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionFX: {fileID: 1034389779976631486, guid: ffba079a09d036d4e89fd6f7d0c1d8fe, type: 3}
+  pointsByEnemy: 0
   speed: 1
   enemyHP: 1
-  explosionFX: {fileID: 1034389779976631486, guid: ffba079a09d036d4e89fd6f7d0c1d8fe, type: 3}
   enemyShot: {fileID: 2129240445050065045, guid: 4808361ee2f8971458733e9f042d39c5, type: 3}
-  firePoint: {fileID: 1928642727}
   shotSpeed: 2
   maxShotTime: 2
+  firePoint: {fileID: 1928642727}
 --- !u!1 &2146690820
 GameObject:
   m_ObjectHideFlags: 0
