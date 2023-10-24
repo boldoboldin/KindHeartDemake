@@ -28,12 +28,24 @@ public class Enemies : MonoBehaviour
             Instantiate(explosionFX, transform.position, Quaternion.identity);
             Destroy(gameObject);
 
-            FindObjectOfType<SpawEnemies>().PointsToGive(pointsByEnemy);
+            var generator = FindAnyObjectByType<SpawEnemies>();
+            generator.ReduceEnemiesQtd();
+            generator.PointsToGive(pointsByEnemy);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Destroyer"))
+        {
+            var generator = FindAnyObjectByType<SpawEnemies>();
+            generator.ReduceEnemiesQtd();
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        
         if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerCtrl>().PlayerHit(1);
